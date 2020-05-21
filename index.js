@@ -10,6 +10,9 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended:false}));
 
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
 //serve file statically
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -20,7 +23,11 @@ app.use(shopRouters);
 // catch all middleware
 app.use((req,res,next)=>{
     // res.status(404).send('<h1>Page not found</h1>');
-    res.sendFile(path.join(rootDirectory, 'views', '404.html'));
+    // res.sendFile(path.join(rootDirectory, 'views', '404.html'));
+    res.render('404', {
+        someTitle: 'HEY!!!! PAGE NOT FOUND!',
+        pageTitle: 'Page not found'
+    });
 });
 
 app.listen(5000);
