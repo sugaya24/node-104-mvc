@@ -11,15 +11,12 @@ const prodData = JSON.parse(data);
 
 
 router.get('/add-products',(req, res, next) => {
-    // res.send('');
-    // res.sendFile(path.join(rootDirectory, 'views', 'add-product.html'));
     res.render('add-product',{
         pageTitle: 'Add a product'
     });
 });
 
 router.post('/add-product', (req, res, next) => {
-    // console.log(req.body);
     const newData = [
         ...prodData,
         {
